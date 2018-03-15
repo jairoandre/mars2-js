@@ -82,8 +82,7 @@ function Lander(x, y, vx, vy, fuel, rotate, power) {
 Lander.prototype.update = function(gene) {
   let newX = this.position.x + this.velocity.x * t;
   let newY = this.position.y + this.velocity.y * t;
-  let composed = new Vector(gene.power, (90 + gene.angle) * Math.PI / 180).add(gravity);
-  let c = composed.toCartesian();
+  let c = new Vector(gene.power, (90 + gene.angle) * Math.PI / 180).toCartesian().add(gravity);
   text(`${c.x}, ${c.y}`, 10, 60);
   let newVx = this.velocity.x + c.x * t;
   let newVy = this.velocity.y + c.y * t;
@@ -109,7 +108,7 @@ Lander.prototype.debug = function() {
 ////////////////////
 let points;
 let lander;
-let gravity = new Vector(-3.711, Math.PI / 2);
+let gravity = new Vector(0, -3.711);
 let t = 0.1;
 let timerControl = 0;
 let genesIdx = 0;
